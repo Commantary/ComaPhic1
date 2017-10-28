@@ -27,10 +27,10 @@ if(!empty($fichier)){
 	sort($fichier);// pour le tri croissant, rsort() pour le tri décroissant
 	echo "Some links: \n\n";
 	echo "\t\t<ul>\n";
-		
-			echo "\t\t\t<li><a href=\"$dir_nom/link_of_my_application.php \">$lien</a></li>\n";
-			echo "\t\t\t<li><a href=\"$dir_nom/riot.txt \">$lien</a></li>\n";
-		
+		foreach($fichier as $lien) {
+			echo "\t\t\t<li><a href=\"$dir_nom/link_of_my_application.php \">link of my application</a></li>\n"; 
+      echo "\t\t\t<li><a href=\"$dir_nom/riot.txt \">riot.txt</a></li>\n"; 
+		}
 	echo "\t\t</ul>";
  }
 ?>
