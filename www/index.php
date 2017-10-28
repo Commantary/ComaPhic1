@@ -13,16 +13,6 @@ while($element = readdir($dir)) {
 
 closedir($dir);
 
-if(!empty($dossier)) {
-	sort($dossier); // pour le tri croissant, rsort() pour le tri décroissant
-	echo "Liste des dossiers accessibles dans '$dir_nom' : \n\n";
-	echo "\t\t<ul>\n";
-		foreach($dossier as $lien){
-			echo "\t\t\t<li><a href=\"$dir_nom/$lien \">$lien</a></li>\n";
-		}
-	echo "\t\t</ul>";
-}
-
 if(!empty($fichier)){
 	sort($fichier);// pour le tri croissant, rsort() pour le tri décroissant
 	echo "Some links: \n\n";
