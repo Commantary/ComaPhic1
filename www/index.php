@@ -18,7 +18,8 @@ if(!empty($fichier)){
 	echo "Some links: \n\n";
 	echo "\t\t<ul>\n";
 			echo "\t\t\t<li><a href=\"$dir_nom/link_of_my_application.php \">link of my application</a></li>\n"; 
-      		echo "\t\t\t<li><a href=\"$dir_nom/riot.txt \">riot.txt</a></li>\n"; 
+      		echo "\t\t\t<li><a href=\"$dir_nom/riot.txt \">riot.txt</a></li>\n";
+      		echo "\t\t\t<li><a href=\"$dir_nom/teste_2.php \">le teste voila</a></li>\n";
 		
 	echo "\t\t</ul>";
  }
