@@ -1,0 +1,1 @@
+<?php header( 'Location: /site-template2/index.html' ) ;  ?>s

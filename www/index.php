@@ -21,6 +21,7 @@ if(!empty($fichier)){
       		echo "\t\t\t<li><a href=\"$dir_nom/riot.txt \">riot.txt</a></li>\n";
       		echo "\t\t\t<li><a href=\"$dir_nom/teste_2.php \">le teste voila</a></li>\n";
       		echo "\t\t\t<li><a href=\"$dir_nom/site.php \">Sa c le site lul</a></li>\n";
+      		echo "\t\t\t<li><a href=\"$dir_nom/site2.php \">template 2</a></li>\n";
 		
 	echo "\t\t</ul>";
  }
