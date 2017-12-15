@@ -39,7 +39,10 @@
 			font-family: sans-serif;
 		}
 		#img {
-			margin: 5px 1em 0 auto;
+    		display: block;
+    		margin: auto;
+    		vertical-align: center;
+    		line-height: 10px;
 		}
 		#p2 {
 			color: #585858;
@@ -47,20 +50,28 @@
 			line-height: 5px;
 			font-family: sans-serif;
 		}
+		#div2 {
+			width: 500px;
+			margin: auto;
+			background-color: #D8D8D8;
+		}
+		#p2 {
+			text-align: center;
+		}
 	</style>
 <body>
 
 
 <div id="mep">
-	<p id="mepp">BIENVENUE SUR LE SITE DE COMMENTARY!</p>
+	<p id="mepp">COMA.GG</p>
 </div>
 
 <div id="div1">
 	<p id="p1">Informations du compte <strong><?php echo $_POST['pseudo']; ?></strong></p>
-	<p id="p2"></p>
+	
 		<script>
 			var info = {};
-			var api_key = "RGAPI-e17cd237-4423-4fd0-aade-15b4ca4c15aa";
+			var api_key = "RGAPI-1c869ecf-112f-4871-9686-7e4fadf78d62";
 			var cors_url = "https://cors-anywhere.herokuapp.com/";
 			var name = "<?php echo $_POST['pseudo']; ?>";
 		  $.get(cors_url + "https://euw1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + name + "?api_key=" + api_key, function(data, textStatus, jqXHR) {
@@ -75,7 +86,12 @@
 				
 			});
 		</script>
-	<img id="img" src="" alt="image profile" height="50">
+		
+		<div id="div2">
+			<img id="img" src="" alt="image profile" height="80">
+			<span id="p2"></span>
+		</div>
+	
 </div>
 
 </body>
