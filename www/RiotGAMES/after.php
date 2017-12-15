@@ -71,7 +71,7 @@
 	
 		<script>
 			var info = {};
-			var api_key = "RGAPI-1c869ecf-112f-4871-9686-7e4fadf78d62";
+			var api_key = "RGAPI-e17cd237-4423-4fd0-aade-15b4ca4c15aa";
 			var cors_url = "https://cors-anywhere.herokuapp.com/";
 			var name = "<?php echo $_POST['pseudo']; ?>";
 		  $.get(cors_url + "https://euw1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + name + "?api_key=" + api_key, function(data, textStatus, jqXHR) {
