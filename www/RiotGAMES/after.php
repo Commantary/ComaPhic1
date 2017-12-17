@@ -80,8 +80,18 @@
     	width: 100px;
    	 	height: 100px;
 		}
-		#level {
+		#infoRank {
+			display: table-cell;
+			vertical-align: middle;
+			width: 135px;
+			height: 116px;
+			text-align: center;
+			background-color: #EAE5E5;
 
+				border-top: 1px solid #9E9A9A;
+				border-bottom: 1px solid #9E9A9A;
+				border-right: 1px solid #9E9A9A;
+				border-left: 1px solid #9E9A9A;
 		}
 		#level {
     	position: absolute;
@@ -101,6 +111,19 @@
     	font-size: 14px;
     	text-align: center;
     	color: #eabd56;
+		}
+
+		#rankInfo {
+			display: table-cell;
+			vertical-align: middle;
+			font-size: 12px;
+			line-height: 1.5;
+			text-align: left;
+		}
+
+		#TierRank {
+			color: #412D2D;
+			font-size: 15px;
 		}
 	</style>
 <body>
@@ -125,11 +148,20 @@
 
 		<div id="infos">
 			<p id="summonerName">&nbsp;&nbsp;&nbsp;&nbsp;<strong><?php echo $_POST['pseudo']; ?></strong></p>
-			<hr noshade size=3 width=155 align=left>
+			<hr noshade size=3 width=176 align=left>
 
 			<div id="infoRank">
-				<img id="imgRank" src="">
-				<p id="rank"></p>
+
+				<div id="rankImg">
+					<img id="imgRank" src="" width="176">
+				</div>
+				
+				<div id="rankInfo">
+					<div id="TierRank" style="text-align:center">
+						<span id="tierRank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					</div>
+				</div>
+				
 			</div>
 			
 		</div>
@@ -139,7 +171,6 @@
 </div>
 
 <script>
-			var info = {};
 			var api_key = "RGAPI-1c869ecf-112f-4871-9686-7e4fadf78d62";
 			var cors_url = "https://cors-anywhere.herokuapp.com/";
 			var name = "<?php echo $_POST['pseudo']; ?>";
@@ -154,17 +185,78 @@
 
 				<!-- Url pour le rank -->
 				$.get(cors_url + "https://euw1.api.riotgames.com/lol/league/v3/leagues/by-summoner/" + accId + "?api_key=" + api_key, function(data, textStatus, jqXHR) {
-					var json = JSON.parse(data)
-					if(json[0]==undefined) {
-						
-						$('#rank').text('Unranked');
-					} else {
-						
+						if(data[0]==undefined) {
+							let imgRank = document.getElementById("imgRank")
+							imgRank.src="http://opgg-static.akamaized.net/images/medals/default.png"
+
+							$('#tierRank').text("unranked")
+						} else {
+							var indexRankingSD = data[0]
+                            var soloRankDivisionSD = indexRankingSD.entries.find(post => post.playerOrTeamId === '' + accId + '')
+
+							if(soloRankDivisionSD.rank==="V") {
+								let tier = data[0].tier
+								let rankDivArr = tier.split('')
+								let rankDivisionName = tier.substr(0, 1) + "" + tier.substr(1, 16).toLowerCase() + " 5"
+								$('#tierRank').text($('#tierRank').text() + "" + rankDivisionName)
+								let imgRank = document.getElementById("imgRank")
+								let str = data[0].tier
+								let rank = str.toLowerCase()
+
+								imgRank.src="http://opgg-static.akamaized.net/images/medals/" + rank + "_5.png"
 
 
-                            
-						$('#rank').text('Ranked');
-					}
+							} else if (soloRankDivisionSD.rank==="IV") {
+								let tier = data[0].tier
+								let rankDivArr = tier.split('')
+								let rankDivisionName = tier.substr(0, 1) + "" + tier.substr(1, 16).toLowerCase() + " 4"
+								$('#tierRank').text($('#tierRank').text() + "" + rankDivisionName)
+								let imgRank = document.getElementById("imgRank")
+								let str = data[0].tier
+								let rank = str.toLowerCase()
+
+								imgRank.src="http://opgg-static.akamaized.net/images/medals/" + rank + "_4.png"
+
+
+							} else if (soloRankDivisionSD.rank==="III") {
+								let tier = data[0].tier
+								let rankDivArr = tier.split('')
+								let rankDivisionName = tier.substr(0, 1) + "" + tier.substr(1, 16).toLowerCase() + " 3"
+								$('#tierRank').text($('#tierRank').text() + "" + rankDivisionName)
+								let imgRank = document.getElementById("imgRank")
+								let str = data[0].tier
+								let rank = str.toLowerCase()
+
+								imgRank.src="http://opgg-static.akamaized.net/images/medals/" + rank + "_3.png"
+
+
+							} else if (soloRankDivisionSD.rank==="II") {
+								let tier = data[0].tier
+								let rankDivArr = tier.split('')
+								let rankDivisionName = tier.substr(0, 1) + "" + tier.substr(1, 16).toLowerCase() + " 2"
+								$('#tierRank').text($('#tierRank').text() + "" + rankDivisionName)
+								let imgRank = document.getElementById("imgRank")
+								let str = data[0].tier
+								let rank = str.toLowerCase()
+
+								imgRank.src="http://opgg-static.akamaized.net/images/medals/" + rank + "_2.png"
+
+
+							} else if (soloRankDivisionSD.rank==="I") {
+								let tier = data[0].tier
+								let rankDivArr = tier.split('')
+								let rankDivisionName = tier.substr(0, 1) + "" + tier.substr(1, 16).toLowerCase() + " 1"
+								$('#tierRank').text($('#tierRank').text() + "" + rankDivisionName)
+								let imgRank = document.getElementById("imgRank")
+								let str = data[0].tier
+								let rank = str.toLowerCase()
+
+								imgRank.src="http://opgg-static.akamaized.net/images/medals/" + rank + "_1.png"
+
+
+							}
+						}
+						
 				})
 				
 			});
