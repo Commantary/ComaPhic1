@@ -114,16 +114,18 @@
 		}
 
 		#rankInfo {
-			display: table-cell;
-			vertical-align: middle;
-			font-size: 12px;
-			line-height: 1.5;
-			text-align: left;
+			display: flex; /* contexte sur le parent */
+  			flex-direction: column; /* direction d'affichage verticale */
+ 			justify-content: center; /* alignement vertical */
 		}
 
 		#TierRank {
 			color: #412D2D;
 			font-size: 15px;
+		}
+		
+		#teste {
+			
 		}
 	</style>
 <body>
@@ -131,6 +133,7 @@
 
 <div id="mep">
 	<p id="mepp">INFORMATIONS A PROPOS D'UN COMPTE LEAGUE OF LEGENDS</p>
+	<p id="status"></p>
 </div>
 
 <div id="div1">
@@ -147,7 +150,7 @@
 		</div>
 
 		<div id="infos">
-			<p id="summonerName">&nbsp;&nbsp;&nbsp;<strong><?php echo $_POST['pseudo']; ?></strong></p>
+			<p id="summonerName">&nbsp;&nbsp;&nbsp;&nbsp;<strong><?php echo $_POST['pseudo']; ?></strong></p>
 			<hr noshade size=3 width=176 align=left>
 
 			<div id="infoRank">
@@ -157,8 +160,8 @@
 				</div>
 				
 				<div id="rankInfo">
-					<div id="TierRank" style="text-align:center">
-						<span id="tierRank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<div id="TierRank">
+						<span id="tierRank"></span>
 					</div>
 				</div>
 				
@@ -175,6 +178,7 @@
 			var cors_url = "https://cors-anywhere.herokuapp.com/";
 			var name = "<?php echo $_POST['pseudo']; ?>";
 		  $.get(cors_url + "https://euw1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" + name + "?api_key=" + api_key, function(data, textStatus, jqXHR) {
+
 		  		var lvl = data.summonerLevel;
 		  		var iconId = data.profileIconId;
 		  		var accId = data.id;
