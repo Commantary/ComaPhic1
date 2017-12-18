@@ -147,7 +147,7 @@
 		</div>
 
 		<div id="infos">
-			<p id="summonerName">&nbsp;&nbsp;&nbsp;&nbsp;<strong><?php echo $_POST['pseudo']; ?></strong></p>
+			<p id="summonerName">&nbsp;&nbsp;&nbsp;<strong><?php echo $_POST['pseudo']; ?></strong></p>
 			<hr noshade size=3 width=176 align=left>
 
 			<div id="infoRank">
